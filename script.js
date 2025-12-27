@@ -1518,7 +1518,7 @@ function calculateStatistics() {
 		else if (state.controls.timerMode === 'stopwatch') {
 			state.statistics.speed =
 				state.currentCharacterIndex
-				/ (state.controls.duration.minute * 600 + state.controls.duration.second * 10) - deciseconds
+				/ ((state.controls.duration.minute * 600 + state.controls.duration.second * 10) - deciseconds)
 				* 600;
 		}
 	}
@@ -1537,7 +1537,7 @@ function calculateStatistics() {
 		else if (state.controls.timerMode === 'stopwatch') {
 			state.statistics.speed =
 				wordCount
-				/ (state.controls.duration.minute * 600 + state.controls.duration.second * 10) - deciseconds
+				/ ((state.controls.duration.minute * 600 + state.controls.duration.second * 10) - deciseconds)
 				* 600;
 		}
 	}
