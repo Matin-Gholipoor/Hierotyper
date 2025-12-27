@@ -988,7 +988,9 @@ inputBox.addEventListener('keydown', (event) => {
 
 	if (inputCharacter === "Backspace") {
 		if (state.controls.allowBackspace) {
-			state.currentCharacterIndex--;
+			if (state.currentCharacterIndex > 0) {
+				state.currentCharacterIndex--;
+			}
 			textToType.charactersState[state.currentCharacterIndex] = 'default';
 		}
 		else {
