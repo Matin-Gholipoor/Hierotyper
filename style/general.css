@@ -386,7 +386,6 @@ main>.buttons-row .button {
 
 .modal-overlay--getting-started-overlay {
 	display: none;
-	pointer-events: none;
 }
 
 .modal--getting-started-overlay {
@@ -395,6 +394,10 @@ main>.buttons-row .button {
 	align-items: start;
 
 	row-gap: 16px;
+}
+
+.modal--getting-started-overlay .close-button{
+	align-self: end;
 }
 
 .step {

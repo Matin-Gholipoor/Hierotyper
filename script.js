@@ -405,17 +405,19 @@ fileInput.removeAttribute("multiple");
 
 // =================== event listeners =================== //
 
-document.addEventListener('keydown', () => {
-	if (keyboardOverlay.style.display !== 'none') {
-		keyboardOverlay.style.display = 'none';
-	}
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'Escape') {
+		if (keyboardOverlay.style.display !== 'none') {
+			keyboardOverlay.style.display = 'none';
+		}
 
-	if (numpadOverlay.style.display !== 'none') {
-		numpadOverlay.style.display = 'none';
-	}
+		if (numpadOverlay.style.display !== 'none') {
+			numpadOverlay.style.display = 'none';
+		}
 
-	if (gettingStartedOverlay.style.display !== 'none') {
-		gettingStartedOverlay.style.display = 'none';
+		if (gettingStartedOverlay.style.display !== 'none') {
+			gettingStartedOverlay.style.display = 'none';
+		}
 	}
 });
 
@@ -783,14 +785,12 @@ modalCloseButtons.forEach(closeButton => {
 	closeButton.addEventListener('click', () => {
 		keyboardOverlay.style.display = 'none';
 		numpadOverlay.style.display = 'none';
+		gettingStartedOverlay.style.display = 'none';
 	});
 });
 
-gettingStartedTitle.addEventListener('mouseenter', () => {
+gettingStartedTitle.addEventListener('click', () => {
 	gettingStartedOverlay.style.display = 'flex';
-});
-gettingStartedTitle.addEventListener('mouseleave', () => {
-	gettingStartedOverlay.style.display = 'none';
 });
 
 defaultModalKeyboard.querySelectorAll('.key').forEach(key => {
@@ -1568,16 +1568,16 @@ function renderFingerMapping() {
 			currentCharcterInfo.charcter = textToType.text[state.currentCharacterIndex];
 		}
 		if (state.textSettings.practiceMode === 'main') {
-				for (const keyboardState in keyboardKeys[state.textSettings.language]) {
-					const index = keyboardKeys[state.textSettings.language][keyboardState].indexOf(currentCharcterInfo.charcter);
+			for (const keyboardState in keyboardKeys[state.textSettings.language]) {
+				const index = keyboardKeys[state.textSettings.language][keyboardState].indexOf(currentCharcterInfo.charcter);
 
-					if (index !== -1) {
-						currentCharcterInfo.language = state.textSettings.language;
-						currentCharcterInfo.keyboardState = keyboardState;
-						currentCharcterInfo.index = index;
-						break;
-					}
+				if (index !== -1) {
+					currentCharcterInfo.language = state.textSettings.language;
+					currentCharcterInfo.keyboardState = keyboardState;
+					currentCharcterInfo.index = index;
+					break;
 				}
+			}
 		}
 		else if (state.textSettings.practiceMode === 'numpad') {
 			currentCharcterInfo.language = 'numpad';
