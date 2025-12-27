@@ -1568,19 +1568,16 @@ function renderFingerMapping() {
 			currentCharcterInfo.charcter = textToType.text[state.currentCharacterIndex];
 		}
 		if (state.textSettings.practiceMode === 'main') {
-			for (const language in keyboardKeys) {
-				for (const keyboardState in keyboardKeys[language]) {
-					const index = keyboardKeys[language][keyboardState].indexOf(currentCharcterInfo.charcter);
+				for (const keyboardState in keyboardKeys[state.textSettings.language]) {
+					const index = keyboardKeys[state.textSettings.language][keyboardState].indexOf(currentCharcterInfo.charcter);
 
 					if (index !== -1) {
-						currentCharcterInfo.language = language;
+						currentCharcterInfo.language = state.textSettings.language;
 						currentCharcterInfo.keyboardState = keyboardState;
 						currentCharcterInfo.index = index;
 						break;
 					}
 				}
-				if (currentCharcterInfo.index !== -1) break;
-			}
 		}
 		else if (state.textSettings.practiceMode === 'numpad') {
 			currentCharcterInfo.language = 'numpad';
