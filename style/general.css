@@ -194,6 +194,8 @@ header img {
 	white-space: pre-wrap;
 
 	min-height: calc(var(--body1-line-height) + 16px);
+
+	position: relative;
 }
 
 .input-box {

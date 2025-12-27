@@ -1076,6 +1076,8 @@ inputBox.addEventListener('keydown', (event) => {
 	}
 
 	renderFingerMapping();
+
+	scrollToCurrentCharacter();
 });
 
 pauseResumeButton.addEventListener('click', () => {
@@ -1727,4 +1729,10 @@ function renderFingerMapping() {
 			key.classList.replace('key--selected', 'key--default');
 		});
 	}
+}
+
+function scrollToCurrentCharacter() {
+	const spans = textToTypeBox.querySelectorAll('span');
+
+	textToTypeBox.scrollTop = spans[state.currentCharacterIndex].offsetTop - parseFloat(getComputedStyle(textToTypeBox).paddingBlock);
 }
