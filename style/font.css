@@ -1,0 +1,147 @@
+:root {
+	--h1-lg-size: 40px;
+	--h1-lg-line-height: 50px;
+	--h2-lg-size: 32px;
+	--h2-lg-line-height: 40px;
+	--h3-lg-size: 28px;
+	--h3-lg-line-height: 36px;
+	--h4-lg-size: 24px;
+	--h4-lg-line-height: 30px;
+	--h5-lg-size: 20px;
+	--h5-lg-line-height: 24px;
+	--h6-lg-size: 16px;
+	--h6-lg-line-height: 20px;
+
+	--h1-sm-size: 32px;
+	--h1-sm-line-height: 40px;
+	--h2-sm-size: 28px;
+	--h2-sm-line-height: 34px;
+	--h3-sm-size: 24px;
+	--h3-sm-line-height: 30px;
+	--h4-sm-size: 20px;
+	--h4-sm-line-height: 24px;
+	--h5-sm-size: 16px;
+	--h5-sm-line-height: 20px;
+	--h6-sm-size: 14px;
+	--h6-sm-line-height: 18px;
+
+	--body1-size: 18px;
+	--body1-line-height: 24px;
+	--body2-size: 16px;
+	--body2-line-height: 20px;
+	--body3-size: 14px;
+	--body3-line-height: 18px;
+	--body4-size: 13px;
+	--body4-line-height: 16px;
+	--body5-size: 12px;
+	--body5-line-height: 16px;
+	--body6-size: 10px;
+	--body6-line-height: 14px;
+}
+
+.heading {
+	font-weight: 700;
+	margin: 0;
+	padding: 0;
+}
+
+.body {
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+.h1-large {
+	font-size: var(--h1-lg-size);
+	line-height: var(--h1-lg-line-height);
+}
+
+.h2-large {
+	font-size: var(--h2-lg-size);
+	line-height: var(--h2-lg-line-height);
+}
+
+.h3-large {
+	font-size: var(--h3-lg-size);
+	line-height: var(--h3-lg-line-height);
+}
+
+.h4-large {
+	font-size: var(--h4-lg-size);
+	line-height: var(--h4-lg-line-height);
+}
+
+.h5-large {
+	font-size: var(--h5-lg-size);
+	line-height: var(--h5-lg-line-height);
+}
+
+.h6-large {
+	font-size: var(--h6-lg-size);
+	line-height: var(--h6-lg-line-height);
+}
+
+.h1-small {
+	font-size: var(--h1-sm-size);
+	line-height: var(--h1-sm-line-height);
+}
+
+.h2-small {
+	font-size: var(--h2-sm-size);
+	line-height: var(--h2-sm-line-height);
+}
+
+.h3-small {
+	font-size: var(--h3-sm-size);
+	line-height: var(--h3-sm-line-height);
+}
+
+.h4-small {
+	font-size: var(--h4-sm-size);
+	line-height: var(--h4-sm-line-height);
+}
+
+.h5-small {
+	font-size: var(--h5-sm-size);
+	line-height: var(--h5-sm-line-height);
+}
+
+.h6-small {
+	font-size: var(--h6-sm-size);
+	line-height: var(--h6-sm-line-height);
+}
+
+.body1 {
+	font-size: var(--body1-size);
+	line-height: var(--body1-line-height);
+}
+
+.body2 {
+	font-size: var(--body2-size);
+	line-height: var(--body2-line-height);
+}
+
+.body3 {
+	font-size: var(--body3-size);
+	line-height: var(--body3-line-height);
+}
+
+.body4 {
+	font-size: var(--body4-size);
+	line-height: var(--body4-line-height);
+}
+
+.body5 {
+	font-size: var(--body5-size);
+	line-height: var(--body5-line-height);
+}
+
+.body6 {
+	font-size: var(--body6-size);
+	line-height: var(--body6-line-height);
+}

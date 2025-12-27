@@ -1,0 +1,51 @@
+:root {
+	--primary1: #F6F0ED;
+	--primary2: #F7DED0;
+	--primary3: #F2C4AA;
+	--primary4: #E0A684;
+	--primary5: #BF7F5A;
+	--primary6: #975834;
+	--primary7: #6A371A;
+	--primary8: #3C1C09;
+	--primary9: #0D0501;
+
+	--accent1: #E9F1F4;
+	--accent2: #B7E2F3;
+	--accent3: #88CFEB;
+	--accent4: #5BB5DA;
+	--accent5: #389AC2;
+	--accent6: #1E7496;
+	--accent7: #0E506A;
+	--accent8: #052C3B;
+	--accent9: #01070A;
+
+	--white: #FFFFFF;
+	--neutral1: #E9F1F4;
+	--neutral2: #C4D0D5;
+	--neutral3: #9AAAB0;
+	--neutral4: #7B8D94;
+	--neutral5: #7B8D94;
+	--neutral6: #425259;
+	--neutral7: #28363B;
+	--neutral8: #060A0C;
+	--neutral9: #01070A;
+	--black: #000000;
+
+	--success-light: #D5F2D8;
+	--success-normal: #4AAC54;
+	--success-dark: #388240;
+
+	--warning-light: #F5E7D0;
+	--warning-normal: #DDA33F;
+	--warning-dark: #9E752D;
+
+	--error-light: #F5E4E1;
+	--error-normal: #E56048;
+	--error-dark: #AC4736;
+
+	--info-light: #D8EAFF;
+	--info-normal: #488FE5;
+	--info-dark: #1F61B1;
+
+	--overlay-filter: rgba(0, 0, 0, 25%);
+}

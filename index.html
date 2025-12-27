@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Hierotyper</title>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/font.css">
+	<link rel="stylesheet" href="style/component.css">
+	<link rel="stylesheet" href="style/effect.css">
+	<link rel="stylesheet" href="style/general.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+
+	<aside class="sidebar">
+		<h2 class="heading h2-small">
+			Text settings
+		</h2>
+
+		<div class="file-input-wrapper">
+			<input type="file" id="file-input" class="file-input">
+			<span class="title body body2">Import sample text file (.docx)</span>
+			<div class="text-box text-box--border4 text-box--dark">
+				<span class="default-character body body4" id="file-name-display">
+					No file chosen
+				</span>
+			</div>
+			<div class="buttons-row">
+				<label for="file-input" class="button button--small button--border4 button--primary body body3"
+					id="choose-file-button">
+					Choose File
+				</label>
+			</div>
+		</div>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Practice mode</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="practice-mode" value="main" checked>
+				<span class="body body3 radio-option-text--checked">
+					Main keyboard
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="practice-mode" value="numpad">
+				<span class="body body3 radio-option-text--unchecked">
+					Numpad
+				</span>
+			</label>
+		</fieldset>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Language</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="language" value="english" checked>
+				<span class="body body3 radio-option-text--checked">
+					English
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="language" value="persian">
+				<span class="body body3 radio-option-text--unchecked">
+					Persian
+				</span>
+			</label>
+		</fieldset>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Text generation method</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="text-generation-method" value="original" checked>
+				<span class="body body3 radio-option-text--checked">
+					Original text
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="text-generation-method" value="random">
+				<span class="body body3 radio-option-text--unchecked">
+					Character-Filtered Random words
+				</span>
+			</label>
+		</fieldset>
+
+		<button class="button button--primary button--border4 button--small body body3" id="filter-button">Filter
+			keys
+		</button>
+
+		<div class="length-control">
+			<span class="body body2">Text length (characters)</span>
+			<div class="number-input-wrapper number-input-wrapper--horizontal">
+				<button class="button button--primary button--border2 body body2" id="length-decrease-button">-</button>
+				<input type="number" class="number-input body body2" value="100" min="50" max="1000" id="length-input">
+				<button class="button button--primary body body1" id="length-increase-button">+</button>
+			</div>
+		</div>
+
+		<div class="line"></div>
+
+		<div class="getting-started-title" id="getting-started-title">
+			<p class="body body2">
+				How to get started?
+			</p>
+			<img src="assets/question circle icon.svg" alt="question icon">
+		</div>
+	</aside>
+
+	<main>
+		<header>
+			<img src="assets/Logo.png" alt="logo">
+		</header>
+
+		<div class="text-to-type-box text-box text-box--border8 text-box--dark" id="text-to-type-box"></div>
+
+		<textarea wrap="soft" class="input-box body body1" id="input-box"></textarea>
+
+		<div class="badges-row">
+			<div class="badge badge--error--default body body3" id="errors-badge">Errors: 0</div>
+			<div class="badge badge--success--default body body3" id="accuracy-badge">Accuracy: 0%</div>
+			<div class="badge badge--info--default body body3" id="speed-badge">Speed: 0CPM</div>
+			<div class="badge badge--warning--default body body3" id="timer-badge">Time: 0:00</div>
+		</div>
+
+		<div class="buttons-row">
+			<button class="button button--primary button--large button--border8 body body3" id="start-button">Start</button>
+			<button class="button button--disabled button--large button--border8 body body3"
+				id="pause-resume-button">Pause</button>
+			<button class="button button--accent button--large button--border8 body body3" id="reset-button">Reset</button>
+		</div>
+
+		<div class="finger-mapping-container" id="finger-mapping-container">
+			<div class="keyboard shadow2" id="finger-mapping-keyboard">
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body3">`</div>
+					<div class="key key--default key--disabled shadow1 body body3">1</div>
+					<div class="key key--default key--disabled shadow1 body body3">2</div>
+					<div class="key key--default key--disabled shadow1 body body3">3</div>
+					<div class="key key--default key--disabled shadow1 body body3">4</div>
+					<div class="key key--default key--disabled shadow1 body body3">5</div>
+					<div class="key key--default key--disabled shadow1 body body3">6</div>
+					<div class="key key--default key--disabled shadow1 body body3">7</div>
+					<div class="key key--default key--disabled shadow1 body body3">8</div>
+					<div class="key key--default key--disabled shadow1 body body3">9</div>
+					<div class="key key--default key--disabled shadow1 body body3">0</div>
+					<div class="key key--default key--disabled shadow1 body body3">-</div>
+					<div class="key key--default key--disabled shadow1 body body3">=</div>
+					<div class="key key--default key--disabled shadow1 body body3 key-backspace">⟵</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-tab">Tab</div>
+					<div class="key key--default key--disabled shadow1 body body3">Q</div>
+					<div class="key key--default key--disabled shadow1 body body3">W</div>
+					<div class="key key--default key--disabled shadow1 body body3">E</div>
+					<div class="key key--default key--disabled shadow1 body body3">R</div>
+					<div class="key key--default key--disabled shadow1 body body3">T</div>
+					<div class="key key--default key--disabled shadow1 body body3">Y</div>
+					<div class="key key--default key--disabled shadow1 body body3">U</div>
+					<div class="key key--default key--disabled shadow1 body body3">I</div>
+					<div class="key key--default key--disabled shadow1 body body3">O</div>
+					<div class="key key--default key--disabled shadow1 body body3">P</div>
+					<div class="key key--default key--disabled shadow1 body body3">{</div>
+					<div class="key key--default key--disabled shadow1 body body3">}</div>
+					<div class="key key--default key--disabled shadow1 body body3">|</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-caps">Caps Lock</div>
+					<div class="key key--default key--disabled shadow1 body body3">A</div>
+					<div class="key key--default key--disabled shadow1 body body3">S</div>
+					<div class="key key--default key--disabled shadow1 body body3">D</div>
+					<div class="key key--default key--disabled shadow1 body body3">F</div>
+					<div class="key key--default key--disabled shadow1 body body3">G</div>
+					<div class="key key--default key--disabled shadow1 body body3">H</div>
+					<div class="key key--default key--disabled shadow1 body body3">J</div>
+					<div class="key key--default key--disabled shadow1 body body3">K</div>
+					<div class="key key--default key--disabled shadow1 body body3">L</div>
+					<div class="key key--default key--disabled shadow1 body body3">:</div>
+					<div class="key key--default key--disabled shadow1 body body3">"</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-enter">Enter</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-shift">Shift</div>
+					<div class="key key--default key--disabled shadow1 body body3">Z</div>
+					<div class="key key--default key--disabled shadow1 body body3">X</div>
+					<div class="key key--default key--disabled shadow1 body body3">C</div>
+					<div class="key key--default key--disabled shadow1 body body3">V</div>
+					<div class="key key--default key--disabled shadow1 body body3">B</div>
+					<div class="key key--default key--disabled shadow1 body body3">N</div>
+					<div class="key key--default key--disabled shadow1 body body3">M</div>
+					<div class="key key--default key--disabled shadow1 body body3">&lt;</div>
+					<div class="key key--default key--disabled shadow1 body body3">&gt;</div>
+					<div class="key key--default key--disabled shadow1 body body3">?</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-shift">Shift</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-ctrl">Ctrl</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-space">Space</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-ctrl">Ctrl</div>
+				</div>
+			</div>
+			<div class="numpad shadow2" id="finger-mapping-numpad">
+				<div class="key key--default key--disabled shadow1 body body6">Num</div>
+				<div class="key key--default key--disabled shadow1 body body3">/</div>
+				<div class="key key--default key--disabled shadow1 body body3">*</div>
+				<div class="key key--default key--disabled shadow1 body body3">-</div>
+
+				<div class="key key--default key--disabled shadow1 body body3">7</div>
+				<div class="key key--default key--disabled shadow1 body body3">8</div>
+				<div class="key key--default key--disabled shadow1 body body3">9</div>
+				<div class="key key--default key--disabled shadow1 body body3 key-plus">+</div>
+
+				<div class="key key--default key--disabled shadow1 body body3">4</div>
+				<div class="key key--default key--disabled shadow1 body body3">5</div>
+				<div class="key key--default key--disabled shadow1 body body3">6</div>
+
+				<div class="key key--default key--disabled shadow1 body body3">1</div>
+				<div class="key key--default key--disabled shadow1 body body3">2</div>
+				<div class="key key--default key--disabled shadow1 body body3">3</div>
+				<div class="key key--default key--disabled shadow1 body body6 key-enter-num">Enter</div>
+
+				<div class="key key--default key--disabled shadow1 body body3 key-0">0</div>
+				<div class="key key--default key--disabled shadow1 body body3">.</div>
+			</div>
+			<div class="hand-container">
+				<img src="assets/hand/hand.svg" alt="hand" class="hand">
+				<img src="assets/hand/thumb.svg" alt="thumb.svg" class="thumb">
+				<img src="assets/hand/index.svg" alt="index" class="index">
+				<img src="assets/hand/middle.svg" alt="middle" class="middle">
+				<img src="assets/hand/ring.svg" alt="ring" class="ring">
+				<img src="assets/hand/pinky.svg" alt="pinky" class="pinky">
+			</div>
+			<div class="hand-container" id="temporary-hand-container">
+				<img src="assets/hand/hand.svg" alt="hand" class="hand">
+				<img src="assets/hand/thumb.svg" alt="thumb.svg" class="thumb">
+				<img src="assets/hand/index.svg" alt="index" class="index">
+				<img src="assets/hand/middle.svg" alt="middle" class="middle">
+				<img src="assets/hand/ring.svg" alt="ring" class="ring">
+				<img src="assets/hand/pinky.svg" alt="pinky" class="pinky">
+			</div>
+		</div>
+	</main>
+
+	<aside class="sidebar">
+		<h2 class="heading h2-small">
+			Controls
+		</h2>
+
+		<label class="toggle-control js-toggle-controls">
+			<span class="body body2">Allow using backspace</span>
+			<span class="toggle-switch">
+				<input type="checkbox" aria-label="Allow using backspace" id="allow-backspace">
+				<span class="slider"></span>
+			</span>
+		</label>
+
+		<label class="toggle-control js-toggle-controls">
+			<span class="body body2">Show finger mapping</span>
+			<span class="toggle-switch">
+				<input type="checkbox" aria-label="Show finger mapping" id="show-finger" checked>
+				<span class="slider"></span>
+			</span>
+		</label>
+
+		<label class="toggle-control js-toggle-controls">
+			<span class="body body2">Highlight errors while typing</span>
+			<span class="toggle-switch">
+				<input type="checkbox" aria-label="Highlight errors while typing" id="highlight-errors" checked>
+				<span class="slider"></span>
+			</span>
+		</label>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Show errors count</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-errors-count" value="while typing" checked>
+				<span class="body body3 radio-option-text--checked">
+					While typing
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-errors-count" value="after completion">
+				<span class="body body3 radio-option-text--unchecked">
+					After completion
+				</span>
+			</label>
+		</fieldset>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Show accuracy</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-accuracy" value="while typing" checked>
+				<span class="body body3 radio-option-text--checked">
+					While typing
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-accuracy" value="after completion">
+				<span class="body body3 radio-option-text--unchecked">
+					After completion
+				</span>
+			</label>
+		</fieldset>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Show speed</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-speed" value="while typing" checked>
+				<span class="body body3 radio-option-text--checked">
+					While typing
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-speed" value="after completion">
+				<span class="body body3 radio-option-text--unchecked">
+					After completion
+				</span>
+			</label>
+		</fieldset>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Show timer</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-timer" value="while typing" checked>
+				<span class="body body3 radio-option-text--checked">
+					While typing
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="show-timer" value="after completion">
+				<span class="body body3 radio-option-text--unchecked">
+					After completion
+				</span>
+			</label>
+		</fieldset>
+
+		<fieldset class="radio-group">
+			<legend class="body body2 radio-group-title">Speed unit</legend>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="speed-unit" value="cpm" checked>
+				<span class="body body3 radio-option-text--checked">
+					Characters per minute (CPM)
+				</span>
+			</label>
+			<label class="radio-option js-radio-option">
+				<input type="radio" name="speed-unit" value="wpm">
+				<span class="body body3 radio-option-text--unchecked">
+					Words per minute (WPM)
+				</span>
+			</label>
+		</fieldset>
+
+		<div class="timer-mode-section">
+			<fieldset class="radio-group">
+				<legend class="body body2 radio-group-title">Timer mode</legend>
+				<label class="radio-option js-radio-option">
+					<input type="radio" name="timer-mode" value="timer" checked>
+					<span class="body body3 radio-option-text--checked">
+						Timer
+					</span>
+				</label>
+				<label class="radio-option js-radio-option">
+					<input type="radio" name="timer-mode" value="stopwatch">
+					<span class="body body3 radio-option-text--unchecked">
+						Stopwatch
+					</span>
+				</label>
+			</fieldset>
+
+			<div class="duration-input-section" id="duration-input-section">
+				<span class="body body3">
+					Duration
+				</span>
+				<div class="duration-input">
+					<div class="number-input-wrapper number-input-wrapper--vertical">
+						<button class="button button--primary body body1" id="minute-increase-button">+</button>
+						<input type="number" class="number-input body body2" value="1" min="0" max="59" id="minute-input">
+						<button class="button button--primary button--border2 body body2" id="minute-decrease-button">-</button>
+					</div>
+					<div class="body body2">:</div>
+					<div class="number-input-wrapper number-input-wrapper--vertical">
+						<button class="button button--primary body body1" id="second-increase-button">+</button>
+						<input type="number" class="number-input body body2" value="30" min="0" max="59" id="second-input">
+						<button class="button button--primary button--border2 body body2" id="second-decrease-button">-</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<div class="modal-overlay modal-overlay--keyboard" id="keyboard-overlay">
+		<div class="modal modal--keyboard">
+			<button class="close-button js-modal-close-button">
+				<img src="assets/close icon.svg" alt="close icon">
+			</button>
+
+			<div class="keyboard shadow2" id="default-modal-keyboard">
+				<div class="row">
+					<div class="key key--default shadow1 body body3">`</div>
+					<div class="key key--default shadow1 body body3">1</div>
+					<div class="key key--default shadow1 body body3">2</div>
+					<div class="key key--default shadow1 body body3">3</div>
+					<div class="key key--default shadow1 body body3">4</div>
+					<div class="key key--default shadow1 body body3">5</div>
+					<div class="key key--default shadow1 body body3">6</div>
+					<div class="key key--default shadow1 body body3">7</div>
+					<div class="key key--default shadow1 body body3">8</div>
+					<div class="key key--default shadow1 body body3">9</div>
+					<div class="key key--default shadow1 body body3">0</div>
+					<div class="key key--default shadow1 body body3">-</div>
+					<div class="key key--default shadow1 body body3">=</div>
+					<div class="key key--default key--disabled shadow1 body body3 key-backspace">⟵</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-tab">Tab</div>
+					<div class="key key--default shadow1 body body3">q</div>
+					<div class="key key--default shadow1 body body3">w</div>
+					<div class="key key--default shadow1 body body3">e</div>
+					<div class="key key--default shadow1 body body3">r</div>
+					<div class="key key--default shadow1 body body3">t</div>
+					<div class="key key--default shadow1 body body3">y</div>
+					<div class="key key--default shadow1 body body3">u</div>
+					<div class="key key--default shadow1 body body3">i</div>
+					<div class="key key--default shadow1 body body3">o</div>
+					<div class="key key--default shadow1 body body3">p</div>
+					<div class="key key--default shadow1 body body3">[</div>
+					<div class="key key--default shadow1 body body3">]</div>
+					<div class="key key--default shadow1 body body3">\</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-caps">Caps Lock</div>
+					<div class="key key--default shadow1 body body3">a</div>
+					<div class="key key--default shadow1 body body3">s</div>
+					<div class="key key--default shadow1 body body3">d</div>
+					<div class="key key--default shadow1 body body3">f</div>
+					<div class="key key--default shadow1 body body3">g</div>
+					<div class="key key--default shadow1 body body3">h</div>
+					<div class="key key--default shadow1 body body3">j</div>
+					<div class="key key--default shadow1 body body3">k</div>
+					<div class="key key--default shadow1 body body3">l</div>
+					<div class="key key--default shadow1 body body3">;</div>
+					<div class="key key--default shadow1 body body3">'</div>
+					<div class="key key--default shadow1 body body6 key-enter">Enter</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-shift">Shift</div>
+					<div class="key key--default shadow1 body body3">z</div>
+					<div class="key key--default shadow1 body body3">x</div>
+					<div class="key key--default shadow1 body body3">c</div>
+					<div class="key key--default shadow1 body body3">v</div>
+					<div class="key key--default shadow1 body body3">b</div>
+					<div class="key key--default shadow1 body body3">n</div>
+					<div class="key key--default shadow1 body body3">m</div>
+					<div class="key key--default shadow1 body body3">,</div>
+					<div class="key key--default shadow1 body body3">.</div>
+					<div class="key key--default shadow1 body body3">/</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-shift">Shift</div>
+				</div>
+				<div class="row">
+					<div class="key key--default key--disabled shadow1 body body6 key-ctrl">Ctrl</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-space">Space</div>
+					<div class="key key--default key--disabled shadow1 body body6 key-ctrl">Ctrl</div>
+				</div>
+			</div>
+
+			<label class="toggle-control js-toggle-controls" id="include-half-space-option">
+				<span class="body body2">Include half-space</span>
+				<span class="toggle-switch">
+					<input type="checkbox" aria-label="Include half-space" id="include-half-space">
+					<span class="slider"></span>
+				</span>
+			</label>
+
+			<div class="shifted-keys-section">
+				<label class="toggle-control js-toggle-controls">
+					<span class="body body2">Include shifted keys</span>
+					<span class="toggle-switch">
+						<input type="checkbox" aria-label="Include shifted keys" id="include-shifted">
+						<span class="slider"></span>
+					</span>
+				</label>
+
+				<div class="keyboard shadow2 shifted-keyboard" id="shifted-modal-keyboard">
+					<div class="row">
+						<div class="key key--default shadow1 body body3">`</div>
+						<div class="key key--default shadow1 body body3">1</div>
+						<div class="key key--default shadow1 body body3">2</div>
+						<div class="key key--default shadow1 body body3">3</div>
+						<div class="key key--default shadow1 body body3">4</div>
+						<div class="key key--default shadow1 body body3">5</div>
+						<div class="key key--default shadow1 body body3">6</div>
+						<div class="key key--default shadow1 body body3">7</div>
+						<div class="key key--default shadow1 body body3">8</div>
+						<div class="key key--default shadow1 body body3">9</div>
+						<div class="key key--default shadow1 body body3">0</div>
+						<div class="key key--default shadow1 body body3">-</div>
+						<div class="key key--default shadow1 body body3">=</div>
+						<div class="key key--default key--disabled shadow1 body body3 key-backspace">⟵</div>
+					</div>
+					<div class="row">
+						<div class="key key--default key--disabled shadow1 body body6 key-tab">Tab</div>
+						<div class="key key--default shadow1 body body3">Q</div>
+						<div class="key key--default shadow1 body body3">W</div>
+						<div class="key key--default shadow1 body body3">E</div>
+						<div class="key key--default shadow1 body body3">R</div>
+						<div class="key key--default shadow1 body body3">T</div>
+						<div class="key key--default shadow1 body body3">Y</div>
+						<div class="key key--default shadow1 body body3">U</div>
+						<div class="key key--default shadow1 body body3">I</div>
+						<div class="key key--default shadow1 body body3">O</div>
+						<div class="key key--default shadow1 body body3">P</div>
+						<div class="key key--default shadow1 body body3">{</div>
+						<div class="key key--default shadow1 body body3">}</div>
+						<div class="key key--default shadow1 body body3">|</div>
+					</div>
+					<div class="row">
+						<div class="key key--default key--disabled shadow1 body body6 key-caps">Caps Lock</div>
+						<div class="key key--default shadow1 body body3">A</div>
+						<div class="key key--default shadow1 body body3">S</div>
+						<div class="key key--default shadow1 body body3">D</div>
+						<div class="key key--default shadow1 body body3">F</div>
+						<div class="key key--default shadow1 body body3">G</div>
+						<div class="key key--default shadow1 body body3">H</div>
+						<div class="key key--default shadow1 body body3">J</div>
+						<div class="key key--default shadow1 body body3">K</div>
+						<div class="key key--default shadow1 body body3">L</div>
+						<div class="key key--default shadow1 body body3">:</div>
+						<div class="key key--default shadow1 body body3">"</div>
+						<div class="key key--default shadow1 body body6 key-enter">Enter</div>
+					</div>
+					<div class="row">
+						<div class="key key--selected key--disabled shadow1 body body6 key-shift">Shift</div>
+						<div class="key key--default shadow1 body body3">Z</div>
+						<div class="key key--default shadow1 body body3">X</div>
+						<div class="key key--default shadow1 body body3">C</div>
+						<div class="key key--default shadow1 body body3">V</div>
+						<div class="key key--default shadow1 body body3">B</div>
+						<div class="key key--default shadow1 body body3">N</div>
+						<div class="key key--default shadow1 body body3">M</div>
+						<div class="key key--default shadow1 body body3">&lt;</div>
+						<div class="key key--default shadow1 body body3">&gt;</div>
+						<div class="key key--default shadow1 body body3">?</div>
+						<div class="key key--selected key--disabled shadow1 body body6 key-shift">Shift</div>
+					</div>
+					<div class="row">
+						<div class="key key--default key--disabled shadow1 body body6 key-ctrl">Ctrl</div>
+						<div class="key key--default key--disabled shadow1 body body6 key-space">Space</div>
+						<div class="key key--default key--disabled shadow1 body body6 key-ctrl">Ctrl</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-overlay modal-overlay--numpad" id="numpad-overlay">
+		<div class="modal modal--numpad">
+			<button class="close-button js-modal-close-button">
+				<img src="assets/close icon.svg" alt="close icon">
+			</button>
+
+			<div class="numpad shadow2" id="numpad-modal-keyboard">
+				<div class="key key--default key--disabled shadow1 body body6">Num</div>
+				<div class="key key--default shadow1 body body3">/</div>
+				<div class="key key--default shadow1 body body3">*</div>
+				<div class="key key--default shadow1 body body3">-</div>
+
+				<div class="key key--default shadow1 body body3">7</div>
+				<div class="key key--default shadow1 body body3">8</div>
+				<div class="key key--default shadow1 body body3">9</div>
+				<div class="key key--default shadow1 body body3 key-plus">+</div>
+
+				<div class="key key--default shadow1 body body3">4</div>
+				<div class="key key--default shadow1 body body3">5</div>
+				<div class="key key--default shadow1 body body3">6</div>
+
+				<div class="key key--default shadow1 body body3">1</div>
+				<div class="key key--default shadow1 body body3">2</div>
+				<div class="key key--default shadow1 body body3">3</div>
+				<div class="key key--default shadow1 body body6 key-enter-num">Enter</div>
+
+				<div class="key key--default shadow1 body body3 key-0">0</div>
+				<div class="key key--default shadow1 body body3">.</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-overlay modal-overlay--getting-started-overlay" id="getting-started-overlay">
+		<div class="modal modal--getting-started-overlay">
+			<div class="step body body2">
+				<div class="step-badge">1</div>
+				<p class="step-text">
+					Upload a DOCX file with the words you want to practice.
+				</p>
+			</div>
+			<div class="step body body2">
+				<div class="step-badge">2</div>
+				<div class="list-step">
+					<h3 class="step-text body body2">
+						Choose a text generation method:
+					</h3>
+					<ul>
+						<li class="step-text">
+							Use the original file content
+						</li>
+						<li class="step-text">
+							Generate filtered random words.
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step body body2">
+				<div class="step-badge">3</div>
+				<p class="step-text">
+					Select the characters you want to practice.
+				</p>
+			</div>
+			<div class="step body body2">
+				<div class="step-badge">4</div>
+				<p class="step-text">
+					Adjust practice controls in the right sidebar.
+				</p>
+			</div>
+			<div class="step body body2">
+				<div class="step-badge">5</div>
+				<p class="step-text">
+					Start typing.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
