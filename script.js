@@ -405,6 +405,41 @@ fileInput.removeAttribute("multiple");
 
 // =================== event listeners =================== //
 
+const mediaQuery = window.matchMedia('(max-width: 1200px)');
+
+mediaQuery.addEventListener('change', (event) => {
+	if (event.matches) {
+		document.querySelector('.title').classList.replace('body2', 'body3');
+		document.querySelector('.getting-started-title').classList.replace('body2', 'body3');
+		document.querySelectorAll('.radio-group').forEach((radioGroup) => {
+			radioGroup.querySelector('legend').classList.replace('body2', 'body3');
+
+			radioGroup.querySelectorAll('span').forEach((span) => {
+				span.classList.replace('body3', 'body4');
+			});
+		});
+		document.querySelectorAll('.toggle-control').forEach(toggleControl => {
+			toggleControl.firstElementChild.classList.replace('body2', 'body3');
+		});
+	}
+	else {
+		document.querySelector('.title').classList.replace('body3', 'body2');
+		document.querySelector('.getting-started-title').classList.replace('body3', 'body2');
+		document.querySelectorAll('.radio-group').forEach((radioGroup) => {
+			radioGroup.querySelector('legend').classList.replace('body3', 'body2');
+
+			radioGroup.querySelectorAll('span').forEach((span) => {
+				span.classList.replace('body4', 'body3');
+			});
+		});
+		document.querySelectorAll('.toggle-control').forEach(toggleControl => {
+			toggleControl.firstElementChild.classList.replace('body3', 'body2');
+		});
+	}
+});
+
+
+
 document.addEventListener('keydown', (event) => {
 	if (event.key === 'Escape') {
 		if (keyboardOverlay.style.display !== 'none') {

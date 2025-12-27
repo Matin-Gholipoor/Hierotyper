@@ -76,6 +76,7 @@ body {
 	margin-left: 8px;
 
 	display: flex;
+	align-items: center;
 	column-gap: 8px;
 }
 
@@ -122,11 +123,11 @@ body {
 	width: fit-content;
 }
 
-.number-input-wrapper--vertical{
+.number-input-wrapper--vertical {
 	flex-direction: column;
 }
 
-.number-input-wrapper--horizontal{
+.number-input-wrapper--horizontal {
 	flex-direction: row;
 }
 
@@ -191,10 +192,14 @@ header img {
 	overflow: auto;
 
 	white-space: pre-wrap;
+
+	min-height: calc(var(--body1-line-height) + 16px);
 }
 
 .input-box {
 	height: 100px;
+	min-height: calc(var(--body1-line-height) + 16px);
+
 	border: 1px solid;
 	padding: 8px 16px;
 
@@ -268,14 +273,14 @@ main>.buttons-row .button {
 	left: 50%;
 }
 
-#temporary-hand-container{
+#temporary-hand-container {
 	display: none;
 }
 
 #temporary-hand-container .thumb,
 #temporary-hand-container .index,
 #temporary-hand-container .middle,
-#temporary-hand-container .ring{
+#temporary-hand-container .ring {
 	display: none;
 }
 
@@ -366,6 +371,9 @@ main>.buttons-row .button {
 
 	border: none;
 	border-radius: 8px;
+
+	overflow-y: auto;
+	max-height: 90vh;
 }
 
 .modal-overlay--keyboard {
@@ -396,7 +404,7 @@ main>.buttons-row .button {
 	row-gap: 16px;
 }
 
-.modal--getting-started-overlay .close-button{
+.modal--getting-started-overlay .close-button {
 	align-self: end;
 }
 
@@ -484,7 +492,7 @@ main>.buttons-row .button {
 	width: 20px;
 }
 
-.timer-mode-section{
+.timer-mode-section {
 	display: flex;
 	justify-content: space-between;
 
@@ -503,7 +511,7 @@ main>.buttons-row .button {
 	align-items: center;
 }
 
-#filter-button{
+#filter-button {
 	margin-top: -8px;
 	margin-bottom: 8px;
 
