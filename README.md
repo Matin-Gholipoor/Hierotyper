@@ -114,7 +114,7 @@ This was my **first project fully designed from scratch** using UI/UX principles
 ## 🚀 Live Demo
 
 🔗 Live demo deployed on Vercel  
-_Add your link here_
+https://hierotyper.vercel.app/
 
 ---
 
